@@ -93,6 +93,8 @@ if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
 fi
 
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 #gitプロンプト表示
 autoload -Uz add-zsh-hook
 autoload -Uz colors
@@ -120,3 +122,11 @@ RPROMPT="%1(v|%F{green}%1v%f%F{cyan}%2v%f|)"
 
 # git alias complete
 setopt no_complete_aliases
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+# PlantUMLの画像出力最大Sizeを設定
+export PLANTUML_LIMIT_SIZE=18192
